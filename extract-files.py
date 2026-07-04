@@ -179,6 +179,11 @@ blob_fixups: blob_fixups_user_type = {
     .add_needed('libaudioclient_shim.so'),
     'system_ext/lib64/libsource.so': blob_fixup()
     .add_needed('libui_shim.so'),
+    (
+       'vendor/lib64/libcodec2_mtk_venc.so',
+       'vendor/lib64/libcodec2_mtk_vdec.so',
+    ): blob_fixup()
+       .replace_needed('libformatter.so', 'libformatter_mtk.so')
 }  # fmt: skip
 
 module = ExtractUtilsModule(
